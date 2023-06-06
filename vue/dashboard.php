@@ -16,7 +16,7 @@ include 'entete.php';
         </div>
         <div class="box">
             <div class="right-side">
-                <div class="box-topic">Vente</div>
+                <div class="box-topic">Distribution</div>
                 <div class="number"><?php echo getAllVente()['nbre'] ?></div>
                 <div class="indicator">
                     <i class="bx bx-up-arrow-alt"></i>
@@ -36,22 +36,12 @@ include 'entete.php';
             </div>
             <i class="bx bx-cart cart three"></i>
         </div>
-        <div class="box">
-            <div class="right-side">
-                <div class="box-topic">CA</div>
-                <div class="number"><?php echo number_format(getCA()['prix'], 0, ',', ' ') ?></div>
-                <div class="indicator">
-                    <i class="bx bx-down-arrow-alt down"></i>
-                    <span class="text">Aujourd'hui</span>
-                </div>
-            </div>
-            <i class="bx bxs-cart-download cart four"></i>
-        </div>
+        
     </div>
 
     <div class="sales-boxes">
         <div class="recent-sales box">
-            <div class="title">Vente recentes</div>
+            <div class="title">Distribution recentes</div>
             <?php
             $ventes = getLastVente();
             ?>

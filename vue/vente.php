@@ -109,7 +109,7 @@ include 'pied.php';
 ?>
 <script>
     function annuleVente(idVente, idArticle, quantite) {
-        if (confirm("Voulez-vous vraiment annuler cette vente ?")) {
+        if (confirm("Voulez-vous vraiment annuler cette Distribution ?")) {
             window.location.href = "../model/annuleVente.php?idVente=" + idVente + "&idArticle=" + idArticle + "&quantite=" + quantite
         }
     }

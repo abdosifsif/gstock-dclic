@@ -12,7 +12,7 @@ include_once '../model/function.php';
         echo ucfirst(str_replace(".php", "", basename($_SERVER['PHP_SELF'])));
         ?>
     </title>
-    <link rel="stylesheet" href="../public/css/style.css" />
+    <link rel="stylesheet" href="../public/css/monstyle.css" />
     <!-- Boxicons CDN Link -->
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,8 +22,7 @@ include_once '../model/function.php';
 
     <div class="sidebar hidden-print">
         <div class="logo-details">
-            <i class="bx bxl-c-plus-plus"></i>
-            <span class="logo_name">D-CLIC</span>
+        <img class="bx bxl" src="../public/images/logo.png" alt="">
         </div>
         <ul class="nav-links">
             <li>
@@ -35,7 +34,7 @@ include_once '../model/function.php';
             <li>
                 <a href="vente.php" class="<?php echo basename($_SERVER['PHP_SELF'])=="vente.php" ? "active" : "" ?> ">
                     <i class='bx bx-shopping-bag'></i>
-                    <span class="links_name">Vente</span>
+                    <span class="links_name">Distribution</span>
                 </a>
             </li>
             <li>
@@ -68,7 +67,7 @@ include_once '../model/function.php';
                     <span class="links_name">Catégorie</span>
                 </a>
             </li>
-            <li>
+            <!-- <li>
                 <a href="#">
                     <i class="bx bx-pie-chart-alt-2"></i>
                     <span class="links_name">Analyses</span>
@@ -91,7 +90,7 @@ include_once '../model/function.php';
                     <i class="bx bx-user"></i>
                     <span class="links_name">Utilisateur</span>
                 </a>
-            </li>
+            </li> -->
             <!-- <li>
           <a href="#">
             <i class="bx bx-message" ></i>
@@ -104,7 +103,7 @@ include_once '../model/function.php';
             <span class="links_name">Favrorites</span>
           </a>
         </li> -->
-            <li>
+            <!-- <li>
                 <a href="#">
                     <i class="bx bx-cog"></i>
                     <span class="links_name">Configuration</span>
@@ -115,7 +114,7 @@ include_once '../model/function.php';
                     <i class="bx bx-log-out"></i>
                     <span class="links_name">Déconnexion</span>
                 </a>
-            </li>
+            </li> -->
         </ul>
     </div>
     <section class="home-section">
@@ -123,18 +122,15 @@ include_once '../model/function.php';
             <div class="sidebar-button">
                 <i class="bx bx-menu sidebarBtn"></i>
                 <span class="dashboard">
-                    <?php
-                    echo ucfirst(str_replace(".php", "", basename($_SERVER['PHP_SELF'])));
-                    ?>
-                </span>
+    <?php
+    $currentPage = ucfirst(str_replace(".php", "", basename($_SERVER['PHP_SELF'])));
+    if ($currentPage === "Vente") {
+        echo "Distribution";
+    } else {
+        echo $currentPage;
+    }
+    ?>
+</span>
             </div>
-            <div class="search-box">
-                <input type="text" placeholder="Recherche..." />
-                <i class="bx bx-search"></i>
-            </div>
-            <div class="profile-details">
-                <!--<img src="images/profile.jpg" alt="">-->
-                <span class="admin_name">Komche</span>
-                <i class="bx bx-chevron-down"></i>
-            </div>
+            
         </nav>

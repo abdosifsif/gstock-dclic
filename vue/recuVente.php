@@ -14,7 +14,7 @@ if (!empty($_GET['id'])) {
 
     <div class="page">
         <div class="cote-a-cote">
-            <h2>D-CLIC Stock</h2>
+        <img class="bx bxl" src="../public/images/ocp.png" alt="">
             <div>
                 <p>Reçu N° #: <?= $vente['id'] ?> </p>
                 <p>Date: <?= date('d/m/Y H:i:s', strtotime($vente['date_vente'])) ?> </p>
