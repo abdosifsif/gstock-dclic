@@ -57,7 +57,10 @@ if (!empty($_GET['id'])) {
                             <td><?= $value['prenom'] ?></td>
                             <td><?= $value['telephone'] ?></td>
                             <td><?= $value['adresse'] ?></td>
-                            <td><a href="?id=<?= $value['id'] ?>"><i class='bx bx-edit-alt'></i></a></td>
+                            <td>
+                                <a href="?id=<?= $value['id'] ?>"><i class='bx bx-edit-alt'></i></a>
+                                <a onclick="deleteFournisseur(<?= $value['id'] ?>)" style="color: red;"><i class='bx bx-stop-circle'></i></a>
+                            </td>
                         </tr>
                 <?php
 
@@ -74,3 +77,10 @@ if (!empty($_GET['id'])) {
 <?php
 include 'pied.php';
 ?>
+<script>
+    function deleteFournisseur(fournisseurId) {
+    if (confirm("Voulez-vous vraiment supprimer ce fournisseur ?")) {
+        window.location.href = "../model/deleteFournisseur.php?fournisseurId=" + fournisseurId;
+    }
+}
+</script>

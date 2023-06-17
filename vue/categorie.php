@@ -42,7 +42,10 @@ if (!empty($_GET['id'])) {
                 ?>
                         <tr>
                             <td><?= $value['libelle_categorie'] ?></td>
-                            <td><a href="?id=<?= $value['id'] ?>"><i class='bx bx-edit-alt'></i></a></td>
+                            <td>
+                                <a href="?id=<?= $value['id'] ?>"><i class='bx bx-edit-alt'></i>
+                                <a onclick="deleteCategorie(<?= $value['id'] ?>)" style="color: red;"><i class='bx bx-stop-circle'></i></a>
+                            </a></td>
                         </tr>
                 <?php
 
@@ -59,3 +62,10 @@ if (!empty($_GET['id'])) {
 <?php
 include 'pied.php';
 ?>
+<script>
+    function deleteCategorie(CategorieId) {
+    if (confirm("Voulez-vous vraiment supprimer ce Categorie ?")) {
+        window.location.href = "../model/deleteCategorie.php?CategorieId=" + CategorieId;
+    }
+}
+</script>

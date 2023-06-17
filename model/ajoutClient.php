@@ -1,25 +1,23 @@
 <?php
 include 'connexion.php';
 if (
-    !empty($_POST['nom'])
-    && !empty($_POST['prenom'])
+    !empty($_POST['nom_du_service'])
     && !empty($_POST['telephone'])
     && !empty($_POST['adresse'])
 ) {
 
-$sql = "INSERT INTO client(nom, prenom, telephone, adresse)
-        VALUES(?, ?, ?, ?)";
+$sql = "INSERT INTO client(nom_du_service	, telephone, adresse)
+        VALUES( ?, ?, ?)";
     $req = $connexion->prepare($sql);
     
     $req->execute(array(
-        $_POST['nom'],
-        $_POST['prenom'],
+        $_POST['nom_du_service'],
         $_POST['telephone'],
         $_POST['adresse']
     ));
     
     if ( $req->rowCount()!=0) {
-        $_SESSION['message']['text'] = "client ajouté avec succès";
+        $_SESSION['message']['text'] = "service ajouté avec succès";
         $_SESSION['message']['type'] = "success";
     }else {
         $_SESSION['message']['text'] = "Une erreur s'est produite lors de l'ajout du client";

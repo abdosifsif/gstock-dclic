@@ -153,7 +153,10 @@ $offset = ($page - 1) * $limit;
                             <td><?= date('d/m/Y H:i:s', strtotime($value['date_fabrication'])) ?></td>
                             <td><?= date('d/m/Y H:i:s', strtotime($value['date_expiration'])) ?></td>
                             <td><img width="100" height="100" src="<?= $value['images'] ?>" alt="<?= $value['nom_article'] ?>"></td>
-                            <td><a href="?id=<?= $value['id'] ?>"><i class='bx bx-edit-alt'></i></a></td>
+                            <td>
+                                <a href="?id=<?= $value['id'] ?>"><i class='bx bx-edit-alt'></i></a>
+                                <a onclick="deleteArticle(<?= $value['id'] ?>)" style="color: red;"><i class='bx bx-stop-circle'></i></a>
+                            </td>
                         </tr>
                 <?php
 
@@ -199,3 +202,10 @@ $offset = ($page - 1) * $limit;
 <?php
 include 'pied.php';
 ?>
+<script>
+    function deleteArticle(ArticleId) {
+    if (confirm("Voulez-vous vraiment supprimer ce Article ?")) {
+        window.location.href = "../model/deleteArticle.php?ArticleId=" + ArticleId;
+    }
+}
+</script>

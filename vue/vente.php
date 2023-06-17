@@ -28,14 +28,14 @@ if (!empty($_GET['id'])) {
                     ?>
                 </select>
 
-                <label for="id_client">Client</label>
+                <label for="id_client">Service</label>
                 <select name="id_client" id="id_client">
                     <?php
                     $clients = getClient();
                     if (!empty($clients) && is_array($clients)) {
                         foreach ($clients as $key => $value) {
                     ?>
-                            <option value="<?= $value['id'] ?>"><?= $value['nom'] . " " . $value['prenom'] ?></option>
+                            <option value="<?= $value['id'] ?>"><?= $value['nom_du_service']?></option>
                     <?php
 
                         }
@@ -69,7 +69,7 @@ if (!empty($_GET['id'])) {
             <table class="mtable">
                 <tr>
                     <th>Article</th>
-                    <th>Client</th>
+                    <th>Service</th>
                     <th>Quantité</th>
                     <th>Prix</th>
                     <th>Date</th>
@@ -83,7 +83,7 @@ if (!empty($_GET['id'])) {
                 ?>
                         <tr>
                             <td><?= $value['nom_article'] ?></td>
-                            <td><?= $value['nom'] . " " . $value['prenom'] ?></td>
+                            <td><?= $value['nom_du_service']?></td>
                             <td><?= $value['quantite'] ?></td>
                             <td><?= $value['prix'] ?></td>
                             <td><?= date('d/m/Y H:i:s', strtotime($value['date_vente'])) ?></td>

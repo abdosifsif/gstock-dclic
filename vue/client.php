@@ -10,12 +10,9 @@ if (!empty($_GET['id'])) {
     <div class="overview-boxes">
         <div class="box">
             <form action=" <?= !empty($_GET['id']) ?  "../model/modifClient.php" : "../model/ajoutClient.php" ?>" method="post">
-                <label for="nom">Nom</label>
-                <input value="<?= !empty($_GET['id']) ?  $client['nom'] : "" ?>" type="text" name="nom" id="nom" placeholder="Veuillez saisir le nom">
+                <label for="nom">Nom_du_service</label>
+                <input value="<?= !empty($_GET['id']) ?  $client['nom_du_service'] : "" ?>" type="text" name="nom_du_service" id="nom" placeholder="Veuillez saisir le nom du service">
                 <input value="<?= !empty($_GET['id']) ?  $client['id'] : "" ?>" type="hidden" name="id" id="id" >
-                
-                <label for="prenom">Prénom</label>
-                <input value="<?= !empty($_GET['id']) ?  $client['prenom'] : "" ?>" type="text" name="prenom" id="prenom" placeholder="Veuillez saisir le prénom">
 
                 <label for="telephone">N° de téléphone</label>
                 <input value="<?= !empty($_GET['id']) ?  $client['telephone'] : "" ?>" type="text" name="telephone" id="telephone" placeholder="Veuillez saisir le N° de téléphone">
@@ -40,8 +37,7 @@ if (!empty($_GET['id'])) {
         <div class="box">
             <table class="mtable">
                 <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
+                    <th>Nom_du_service</th>
                     <th>Téléphone</th>
                     <th>Adresse</th>
                     <th>Action</th>
@@ -53,11 +49,14 @@ if (!empty($_GET['id'])) {
                     foreach ($clients as $key => $value) {
                 ?>
                         <tr>
-                            <td><?= $value['nom'] ?></td>
-                            <td><?= $value['prenom'] ?></td>
+                            <td><?= $value['nom_du_service'] ?></td>
+                            
                             <td><?= $value['telephone'] ?></td>
                             <td><?= $value['adresse'] ?></td>
-                            <td><a href="?id=<?= $value['id'] ?>"><i class='bx bx-edit-alt'></i></a></td>
+                            <td>
+                                <a href="?id=<?= $value['id'] ?>"><i class='bx bx-edit-alt'></i></a>
+                                <a onclick="deleteClient(<?= $value['id'] ?>)" style="color: red;"><i class='bx bx-stop-circle'></i></a>
+                            </td>
                         </tr>
                 <?php
 
@@ -74,3 +73,10 @@ if (!empty($_GET['id'])) {
 <?php
 include 'pied.php';
 ?>
+<script>
+    function deleteClient(clientId) {
+    if (confirm("Voulez-vous vraiment supprimer ce client ?")) {
+        window.location.href = "../model/deleteClient.php?clientId=" + clientId;
+    }
+}
+</script>

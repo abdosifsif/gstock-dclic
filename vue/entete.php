@@ -22,49 +22,62 @@ include_once '../model/function.php';
 
     <div class="sidebar hidden-print">
         <div class="logo-details">
-        <img class="bx bxl" src="../public/images/logo.png" alt="">
+            <img class="bx bxl" src="../public/images/logo.png" alt="">
         </div>
         <ul class="nav-links">
             <li>
-                <a href="dashboard.php" class="<?php echo basename($_SERVER['PHP_SELF'])=="dashboard.php" ? "active" : "" ?> ">
+                <a href="dashboard.php"
+                    class="<?php echo basename($_SERVER['PHP_SELF']) == "dashboard.php" ? "active" : "" ?> ">
                     <i class="bx bx-grid-alt"></i>
-                    <span class="links_name">Dashboard</span>
+                    <span class="links_name">Tableau de bord</span>
                 </a>
             </li>
             <li>
-                <a href="vente.php" class="<?php echo basename($_SERVER['PHP_SELF'])=="vente.php" ? "active" : "" ?> ">
+                <a href="vente.php"
+                    class="<?php echo basename($_SERVER['PHP_SELF']) == "vente.php" ? "active" : "" ?> ">
                     <i class='bx bx-shopping-bag'></i>
                     <span class="links_name">Distribution</span>
                 </a>
             </li>
             <li>
-                <a href="client.php" class="<?php echo basename($_SERVER['PHP_SELF'])=="client.php" ? "active" : "" ?> ">
+                <a href="client.php"
+                    class="<?php echo basename($_SERVER['PHP_SELF']) == "client.php" ? "active" : "" ?> ">
                     <i class="bx bx-user"></i>
-                    <span class="links_name">Client</span>
+                    <span class="links_name">Service</span>
                 </a>
             </li>
             <li>
-                <a href="article.php"  class="<?php echo basename($_SERVER['PHP_SELF'])=="article.php" ? "active" : "" ?> ">
+                <a href="article.php"
+                    class="<?php echo basename($_SERVER['PHP_SELF']) == "article.php" ? "active" : "" ?> ">
                     <i class="bx bx-box"></i>
                     <span class="links_name">Article</span>
                 </a>
             </li>
             <li>
-                <a href="fournisseur.php"  class="<?php echo basename($_SERVER['PHP_SELF'])=="fournisseur.php" ? "active" : "" ?> ">
+                <a href="fournisseur.php"
+                    class="<?php echo basename($_SERVER['PHP_SELF']) == "fournisseur.php" ? "active" : "" ?> ">
                     <i class="bx bx-user"></i>
                     <span class="links_name">Fournisseur</span>
                 </a>
             </li>
             <li>
-                <a href="commande.php"  class="<?php echo basename($_SERVER['PHP_SELF'])=="commande.php" ? "active" : "" ?> ">
+                <a href="commande.php"
+                    class="<?php echo basename($_SERVER['PHP_SELF']) == "commande.php" ? "active" : "" ?> ">
                     <i class="bx bx-list-ul"></i>
                     <span class="links_name">Commandes</span>
                 </a>
             </li>
             <li>
-                <a href="categorie.php"  class="<?php echo basename($_SERVER['PHP_SELF'])=="categorie.php" ? "active" : "" ?> ">
+                <a href="categorie.php"
+                    class="<?php echo basename($_SERVER['PHP_SELF']) == "categorie.php" ? "active" : "" ?> ">
                     <i class="bx bx-list-ul"></i>
                     <span class="links_name">Catégorie</span>
+                </a>
+            </li>
+            <li class="log_out">
+                <a href="../model/deconnexion.php">
+                    <i class="bx bx-log-out"></i>
+                    <span class="links_name">Déconnexion</span>
                 </a>
             </li>
             <!-- <li>
@@ -108,13 +121,8 @@ include_once '../model/function.php';
                     <i class="bx bx-cog"></i>
                     <span class="links_name">Configuration</span>
                 </a>
-            </li>
-            <li class="log_out">
-                <a href="#">
-                    <i class="bx bx-log-out"></i>
-                    <span class="links_name">Déconnexion</span>
-                </a>
-            </li> -->
+            </li>-->
+
         </ul>
     </div>
     <section class="home-section">
@@ -122,15 +130,23 @@ include_once '../model/function.php';
             <div class="sidebar-button">
                 <i class="bx bx-menu sidebarBtn"></i>
                 <span class="dashboard">
-    <?php
-    $currentPage = ucfirst(str_replace(".php", "", basename($_SERVER['PHP_SELF'])));
-    if ($currentPage === "Vente") {
-        echo "Distribution";
-    } else {
-        echo $currentPage;
-    }
-    ?>
-</span>
+                    <?php
+                    $currentPage = ucfirst(str_replace(".php", "", basename($_SERVER['PHP_SELF'])));
+                    if ($currentPage === "Vente") {
+                        echo "Distribution";
+                    } elseif ($currentPage === "Client") {
+                        echo "Service";
+                    } elseif ($currentPage === "Dashboard") {
+                        echo "Tableau de bord";
+                    }
+                     elseif ($currentPage === "Commande") {
+                        echo "Commandes";
+                    } else {
+                        echo $currentPage;
+                    }
+
+                    ?>
+                </span>
             </div>
-            
+
         </nav>

@@ -57,11 +57,11 @@ include 'entete.php';
                     ?>
                 </ul>
                 <ul class="details">
-                    <li class="topic">Client</li>
+                    <li class="topic">Service</li>
                     <?php
                     foreach ($ventes as $key => $value) {
                     ?>
-                        <li><a href="#"><?php echo $value['nom'] . " " . $value['prenom'] ?></a></li>
+                        <li><a href="#"><?php echo $value['nom_du_service'] ?></a></li>
                     <?php
                     }
                     ?>
@@ -81,7 +81,7 @@ include 'entete.php';
                     <?php
                     foreach ($ventes as $key => $value) {
                     ?>
-                        <li><a href="#"><?php echo number_format($value['prix'], 0, ",", " ") . " F" ?></a></li>
+                        <li><a href="#"><?php echo number_format($value['prix'], 0, ",", " ") . " dhs" ?></a></li>
                     <?php
                     }
                     ?>
@@ -92,7 +92,7 @@ include 'entete.php';
             </div>
         </div>
         <div class="top-sales box">
-            <div class="title">Article le plus vendu</div>
+            <div class="title">Article le plus distribué</div>
             <ul class="top-sales-details">
                 <?php
                 $article = getMostVente();
@@ -103,7 +103,7 @@ include 'entete.php';
                             <!--<img src="images/sunglasses.jpg" alt="">-->
                             <span class="product"><?php echo $value['nom_article'] ?></span>
                         </a>
-                        <span class="price"><?php echo number_format($value['prix'], 0, ",", " ") . " F" ?></span>
+                        <span class="price"><?php echo number_format($value['prix'], 0, ",", " ") . " dhs" ?></span>
                     </li>
                 <?php
                 }
