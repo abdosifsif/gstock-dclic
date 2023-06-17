@@ -1,9 +1,12 @@
 <?php
-include('model/connexion.php');
 
+// Include the necessary files
+require_once 'model/connexion.php';
 if (isset($_POST['submit'])) {
   $login = $_POST['login'];
   $password = $_POST['password'];
+  $_SESSION['logged_in'] = true;
+
 
   $query = "SELECT * FROM admin WHERE nom_d_utilisateur = :login AND mot_de_pass = :password";
   $stmt = $connexion->prepare($query);
@@ -15,6 +18,7 @@ if (isset($_POST['submit'])) {
   if ($result) {
     $_SESSION['login'] = $result['nom_d_utilisateur'];
     $_SESSION['profil'] = $result['profil'];
+    $_SESSION['logged_in'] = true;
     header('Location: vue/dashboard.php');
     exit();
   } else {

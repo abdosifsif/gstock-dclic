@@ -99,6 +99,7 @@ function getClient($id = null)
     }
 }
 
+
 function getVente($id = null)
 {
     if (!empty($id)) {

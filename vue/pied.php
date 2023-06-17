@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    // Redirect the user to the login page or display an error message
+    header('Location: /gstock/index.php');
+    exit();
+}
+?>
 <script>
     let sidebar = document.querySelector(".sidebar");
     let sidebarBtn = document.querySelector(".sidebarBtn");

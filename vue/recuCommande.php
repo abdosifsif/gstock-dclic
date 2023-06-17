@@ -6,10 +6,11 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     header('Location: /gstock/index.php');
     exit();
 }
+
 @include 'entete.php';
 
 if (!empty($_GET['id'])) {
-    $vente = getVente($_GET['id']);
+    $commande = getCommande($_GET['id']);
 }
 
 ?>
@@ -21,28 +22,28 @@ if (!empty($_GET['id'])) {
 
     <div class="page">
         <div class="cote-a-cote">
-        <img class="bx bxl" src="../public/images/ocp.png" alt="">
+            <img class="bx bxl" src="../public/images/ocp.png" alt="">
             <div>
-                <p>Reçu N° #: <?= $vente['id'] ?> </p>
-                <p>Date: <?= date('d/m/Y H:i:s', strtotime($vente['date_vente'])) ?> </p>
+                <p>Reçu N° #: <?= $commande['id'] ?> </p>
+                <p>Date: <?= date('d/m/Y H:i:s', strtotime($commande['date_commande'])) ?> </p>
             </div>
         </div>
 
         <div class="cote-a-cote" style="width: 50%;">
-            <p>Nom du service :</p>
-            <p><?= $vente['nom_du_service'] ?></p>
+            <p>Nom du fournisseur :</p>
+            <p><?= $commande['nom'] . " " . $commande['prenom'] ?></p>
         </div>
         <div class="cote-a-cote" style="width: 50%;">
             <p>Tel :</p>
-            <p><?= $vente['telephone'] ?></p>
+            <p><?= $commande['telephone'] ?></p>
         </div>
         <div class="cote-a-cote" style="width: 50%;">
             <p>Adresse :</p>
-            <p><?= $vente['adresse'] ?></p>
+            <p><?= $commande['adresse'] ?></p>
         </div>
-        
+
         <br>
-        
+
         <table class="mtable">
             <tr>
                 <th>Designation</th>
@@ -52,12 +53,11 @@ if (!empty($_GET['id'])) {
             </tr>
 
             <tr>
-                <td><?= $vente['nom_article'] ?></td>
-                <td><?= $vente['quantite'] ?></td>
-                <td><?= $vente['prix_unitaire'] ?></td>
-                <td><?= $vente['prix'] ?></td>
+                <td><?= $commande['nom_article'] ?></td>
+                <td><?= $commande['quantite'] ?></td>
+                <td><?= $commande['prix_unitaire'] ?></td>
+                <td><?= $commande['prix'] ?></td>
             </tr>
-
         </table>
     </div>
 
@@ -75,15 +75,4 @@ include 'pied.php';
         window.print();
     });
 
-    function setPrix() {
-        var article = document.querySelector('#id_article');
-        var quantite = document.querySelector('#quantite');
-        var prix = document.querySelector('#prix');
-
-        var prixUnitaire = article.options[article.selectedIndex].getAttribute('data-prix');
-
-        prix.value = Number(quantite.value) * Number(prixUnitaire);
-    }
-  
-    
 </script>

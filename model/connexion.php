@@ -1,5 +1,5 @@
 <?php
-session_start();
+@session_start();
 
 $nom_serveur = "localhost";
 $nom_base_de_donne = "gestion_stock_dclic";

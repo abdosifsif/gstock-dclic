@@ -1,6 +1,11 @@
 <?php
-
-include_once '../model/function.php';
+@session_start();
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    // Redirect the user to the login page or display an error message
+    header('Location: /gstock/index.php');
+    exit();
+}
+require_once '../model/function.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">

@@ -1,5 +1,12 @@
 <?php
-include 'entete.php';
+@include 'entete.php';
+
+echo($_SESSION['logged_in']);
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    // Redirect the user to the login page or display an error message
+    header('Location: /gstock/index.php');
+    exit();
+}
 
 if (!empty($_GET['id'])) {
     $article = getVente($_GET['id']);
